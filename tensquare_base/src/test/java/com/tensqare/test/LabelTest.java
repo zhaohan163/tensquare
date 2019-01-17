@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName LabelTest
@@ -46,5 +48,15 @@ public class LabelTest {
         label.setFans(1);
         label.setState("1");
         labelService.save(label);
+    }
+
+    @Test
+    public void findSearch(){
+        Map searchMap = new HashMap();
+        searchMap.put("labelname","h");
+        List<Label> labels = labelService.findSearch(searchMap);
+        for (Label label : labels) {
+            System.out.println(label);
+        }
     }
 }

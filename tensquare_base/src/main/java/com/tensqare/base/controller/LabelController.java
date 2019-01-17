@@ -2,12 +2,15 @@ package com.tensqare.base.controller;
 
 import com.tensqare.base.pojo.Label;
 import com.tensqare.base.service.LabelService;
+import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName LabelController
@@ -78,5 +81,30 @@ public class LabelController {
         labelService.delete(id);
         return new Result(true,StatusCode.OK,"删除成功");
     }
+
+    /**
+     * 根据条件查询  POST
+     * @param searchMap
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST,value = "/search")
+    public Result findSearch(@RequestBody Map searchMap){
+        List<Label> labelList = labelService.findSearch(searchMap);
+        return new Result(true,StatusCode.OK,"查询成功",labelList);
+    }
+
+    /**
+     * 分页查询    POST
+     * @param searchMap
+     * @param page
+     * @param size
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST,value = "/search/{page}/{size}")
+    public Result findSearch(@RequestBody Map searchMap,@PathVariable int page,@PathVariable int size){
+        Page<Label> labelList = labelService.findSearch(searchMap,page,size);
+        return new Result(true,StatusCode.OK,"查询成功",new PageResult<Label>(labelList.getTotalElements(), labelList.getContent()));
+    }
+
 
 }
