@@ -1,4 +1,4 @@
-package com.tensquare.user.service;
+﻿package com.tensquare.user.service;
 
 import com.tensquare.user.dao.UserDao;
 import com.tensquare.user.pojo.User;
@@ -19,7 +19,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 服务层
+ * 服务层 1
  * 
  * @author Administrator
  *
