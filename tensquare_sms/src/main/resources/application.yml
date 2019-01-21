@@ -1,0 +1,13 @@
+server:
+  port: 9009
+spring:
+  application:
+    name: tensquare‐sms #指定服务名
+  rabbitmq:
+    host: 192.168.25.129
+aliyun:
+   sms:
+    accessKeyId: LTAIbgeUZFAtnUDP
+    accessKeySecret: AK86COzTD8Qa2oT08Jd7qkmcGAsAyH
+    template_code: SMS_152543300
+    sign_name: 天翔科技
